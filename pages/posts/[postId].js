@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 function Post({ post }) {
-  const router = useRouter();
+  // const router = useRouter();
 
-  if (router.isFallback) {
-    return <h1>Loading...</h1>;
-  }
+  // if (router.isFallback) {
+  //   return <h1>Loading...</h1>;
+  // }
   return (
     <>
       <div>
@@ -46,7 +46,7 @@ export async function getStaticPaths() {
       },
     ],
     // paths,
-    fallback: true,
+    fallback: "blocking",
   };
 }
 export async function getStaticProps(context) {
@@ -56,11 +56,11 @@ export async function getStaticProps(context) {
   );
 
   const data = await response.json();
-  if (!data.id) {
-    return {
-      notFound: true,
-    };
-  }
+  // if (!data.id) {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
   console.log(`Generating page for /posts/${params.postId}`);
 
   return {
